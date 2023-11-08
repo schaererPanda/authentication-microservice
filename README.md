@@ -154,3 +154,7 @@ if (!response.ok) {
 const { user } = await response.json();
 // The user is authenticated, grant access...
 ```
+
+## `UML Sequence Diagram`
+
+![UML Sequence Diagram](image/LucidChart.png)
