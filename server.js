@@ -7,7 +7,7 @@ import HttpError from "./http-error.js";
 import { config } from "dotenv";
 config();
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 const app = express();
 
 /**
