@@ -1,6 +1,6 @@
 # API Documentation
 
-This is the documentation for the authentication REST API. To use this API, send requests to [API URL], followed by an endpoint.
+This is the documentation for the authentication REST API. To use this API, send requests to `https://authentication-microservice-production-a9ec.up.railway.app`, followed by an endpoint.
 
 ## Endpoints
 
@@ -37,13 +37,16 @@ This is the documentation for the authentication REST API. To use this API, send
 ### Example Call (node.js)
 
 ```javascript
-const response = await fetch(`[API URL]/signup`, {
-  method: "POST",
-  body: JSON.stringify({
-    email: "john@gmail.com",
-    password: "password123",
-  }),
-});
+const response = await fetch(
+  `https://authentication-microservice-production-a9ec.up.railway.app/signup`,
+  {
+    method: "POST",
+    body: JSON.stringify({
+      email: "john@gmail.com",
+      password: "password123",
+    }),
+  }
+);
 
 if (!response.ok) {
   const { message } = await response.json();
@@ -86,13 +89,16 @@ if (!response.ok) {
 ### Example Call (node.js)
 
 ```javascript
-const response = await fetch(`[API URL]/login`, {
-  method: "POST",
-  body: JSON.stringify({
-    email: "john@gmail.com",
-    password: "password123",
-  }),
-});
+const response = await fetch(
+  `https://authentication-microservice-production-a9ec.up.railway.app/login`,
+  {
+    method: "POST",
+    body: JSON.stringify({
+      email: "john@gmail.com",
+      password: "password123",
+    }),
+  }
+);
 
 if (!response.ok) {
   const { message } = await response.json();
@@ -139,12 +145,15 @@ const { token } = await response.json();
 // Get the saved auth token
 // const token = ...;
 
-const response = await fetch(`[API URL]/authenticate`, {
-  method: "POST",
-  body: JSON.stringify({
-    token: token,
-  }),
-});
+const response = await fetch(
+  `https://authentication-microservice-production-a9ec.up.railway.app/authenticate`,
+  {
+    method: "POST",
+    body: JSON.stringify({
+      token: token,
+    }),
+  }
+);
 
 if (!response.ok) {
   const { message } = await response.json();
