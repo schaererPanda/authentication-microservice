@@ -92,11 +92,6 @@ app.post("/authenticate", (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
-  console.log("hello world");
-  res.send({ message: "hello world" });
-});
-
 async function login(email, password) {
   // Find a user with a matching email
   const user = users.find((user) => user.email == email);
