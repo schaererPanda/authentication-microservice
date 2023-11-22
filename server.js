@@ -2,6 +2,7 @@ import express from "express";
 import { hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 const { sign, verify } = jwt;
+import cors from "cors";
 import fs from "fs";
 import HttpError from "./http-error.js";
 import { config } from "dotenv";
@@ -9,6 +10,8 @@ config();
 
 const PORT = process.env.PORT;
 const app = express();
+
+app.use(cors());
 
 /**
  * @typedef {{
