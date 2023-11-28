@@ -32,7 +32,7 @@ app.use(express.json());
 
 app.post("/test", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.send({ x: 5 });
+  res.status(201).send({ message: "Signup successful!" });
 });
 
 // Signup
