@@ -2,7 +2,6 @@ import express from "express";
 import { hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 const { sign, verify } = jwt;
-// import cors from "cors";
 import fs from "fs";
 import HttpError from "./http-error.js";
 import { config } from "dotenv";
@@ -10,8 +9,6 @@ config();
 
 const PORT = process.env.PORT;
 const app = express();
-
-// app.use(cors({ origin: ["*"] }));
 
 /**
  * @typedef {{
@@ -35,6 +32,8 @@ app.use(express.json());
 
 // Signup
 app.post("/signup", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -63,6 +62,8 @@ app.post("/signup", async (req, res) => {
 
 // Login
 app.post("/login", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -82,6 +83,8 @@ app.post("/login", async (req, res) => {
 // Authenticate the user when they try to do something
 // that requires authentication.
 app.post("/authenticate", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   const token = req.body.token;
 
   if (!verify(token, process.env.JWT_SECRET)) {
@@ -115,13 +118,6 @@ async function login(email, password) {
     process.env.JWT_SECRET
   );
 }
-
-app.get("/test", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("X-TEST", "test");
-
-  res.status(200).send({ message: "hello world" });
-});
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
