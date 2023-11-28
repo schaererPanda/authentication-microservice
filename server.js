@@ -30,6 +30,11 @@ const users = JSON.parse(fs.readFileSync("users.json").toString());
 //Middleware
 app.use(express.json());
 
+app.get("/test", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.send({ x: 5 });
+});
+
 // Signup
 app.post("/signup", async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
