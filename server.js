@@ -30,15 +30,15 @@ const users = JSON.parse(fs.readFileSync("users.json").toString());
 //Middleware
 app.use(express.json());
 
-app.post("/test", (req, res) => {
+// Middleware for headers
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.status(201).send({ message: "Signup successful!" });
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
 });
 
 // Signup
 app.post("/signup", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   const email = req.body.email;
   const password = req.body.password;
 
@@ -67,8 +67,6 @@ app.post("/signup", async (req, res) => {
 
 // Login
 app.post("/login", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   const email = req.body.email;
   const password = req.body.password;
 
@@ -88,8 +86,6 @@ app.post("/login", async (req, res) => {
 // Authenticate the user when they try to do something
 // that requires authentication.
 app.post("/authenticate", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   const token = req.body.token;
 
   if (!verify(token, process.env.JWT_SECRET)) {

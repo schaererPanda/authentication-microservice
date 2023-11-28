@@ -45,6 +45,9 @@ const response = await fetch(
       email: "john@gmail.com",
       password: "password123",
     }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   }
 );
 
@@ -97,6 +100,9 @@ const response = await fetch(
       email: "john@gmail.com",
       password: "password123",
     }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   }
 );
 
@@ -152,6 +158,9 @@ const response = await fetch(
     body: JSON.stringify({
       token: token,
     }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   }
 );
 
