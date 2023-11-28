@@ -39,28 +39,28 @@ app.post("/test", (req, res) => {
 app.post("/signup", async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  // const email = req.body.email;
-  // const password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
 
-  // if (password.length < 8) {
-  //   res.status(400).send({ message: "Password must be 8+ characters." });
-  //   return;
-  // }
+  if (password.length < 8) {
+    res.status(400).send({ message: "Password must be 8+ characters." });
+    return;
+  }
 
-  // if (users.find((user) => user.email == email)) {
-  //   res.status(400).send({ message: "Email is already in use." });
-  //   return;
-  // }
+  if (users.find((user) => user.email == email)) {
+    res.status(400).send({ message: "Email is already in use." });
+    return;
+  }
 
-  // const passwordHash = await hash(password, 10);
+  const passwordHash = await hash(password, 10);
 
-  // const user = {
-  //   email: email,
-  //   passwordHash: passwordHash,
-  // };
+  const user = {
+    email: email,
+    passwordHash: passwordHash,
+  };
 
-  // users.push(user);
-  // fs.writeFileSync("users.json", JSON.stringify(users));
+  users.push(user);
+  fs.writeFileSync("users.json", JSON.stringify(users));
 
   res.status(201).send({ message: "Signup successful!" });
 });
