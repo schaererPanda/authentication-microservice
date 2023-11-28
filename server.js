@@ -2,7 +2,7 @@ import express from "express";
 import { hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 const { sign, verify } = jwt;
-import cors from "cors";
+// import cors from "cors";
 import fs from "fs";
 import HttpError from "./http-error.js";
 import { config } from "dotenv";
@@ -11,7 +11,7 @@ config();
 const PORT = process.env.PORT;
 const app = express();
 
-app.use(cors({ origin: ["*"] }));
+// app.use(cors({ origin: ["*"] }));
 
 /**
  * @typedef {{
@@ -117,7 +117,8 @@ async function login(email, password) {
 }
 
 app.get("/test", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("X-TEST", "test");
 
   res.status(200).send({ message: "hello world" });
 });
