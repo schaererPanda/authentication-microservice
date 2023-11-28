@@ -11,7 +11,7 @@ config();
 const PORT = process.env.PORT;
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: ["*"] }));
 
 /**
  * @typedef {{
@@ -115,6 +115,10 @@ async function login(email, password) {
     process.env.JWT_SECRET
   );
 }
+
+app.get("/test", async (req, res) => {
+  res.status(200).send({ message: "hello world" });
+});
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
