@@ -117,7 +117,7 @@ async function login(email, password) {
 }
 
 app.get("/test", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin: http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 
   res.status(200).send({ message: "hello world" });
 });
