@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 //app.use(cors())
-PORT = 3418;
+PORT = 3000;
 
 /**
  * @typedef {{
